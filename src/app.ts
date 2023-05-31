@@ -15,7 +15,7 @@ let turn: number, winner: boolean, tie: boolean, board: number[]
 
 /*------------------------ Cached Element References ------------------------*/
 const squareEls = document.querySelectorAll<HTMLElement>(".sqr")
-const resetBtnEl = document.querySelector<HTMLButtonElement>("btn")
+const resetBtnEl = document.querySelector<HTMLButtonElement>("#btn")
 const messageEl = document.querySelector<HTMLHeadingElement>("#message")!
 const boardEl = document.querySelector<HTMLElement>(".board")
 
@@ -31,7 +31,7 @@ resetBtnEl?.addEventListener("click", init)
 
 init()
 
-function init() {
+function init() :void{
   board = [0, 0, 0, 0, 0, 0, 0, 0, 0]
   turn = 1
   winner = false
@@ -39,7 +39,7 @@ function init() {
   render()
 }
 
-function render(){
+function render() :void{
   updateBoard()
   updateMessage()
 }
@@ -57,7 +57,7 @@ function updateBoard() :void {
     })
 }
 
-function updateMessage(){
+function updateMessage() :void{
   if (winner === false && tie === false){
     messageEl.textContent = `It's ${turn === 1 ? "🗿" : "🦍"}'s turn!`
 } else if (winner === false && tie === true){
@@ -67,7 +67,7 @@ function updateMessage(){
 }
 }
 
-function handleClick(evt: MouseEvent){
+function handleClick(evt: MouseEvent) : void{
   if (!evt.target) return 
   let number = evt.target as HTMLElement
   const sqIdx: number = parseInt(number.id.replace("sq", ""))
@@ -79,17 +79,17 @@ function handleClick(evt: MouseEvent){
     render()
 }
 
-function placePiece(idx: number){
+function placePiece(idx: number) :void{
   board[idx] = turn
 }
 
-function checkForTie(){
+function checkForTie() :void{
   if (!board.includes(0)) {
     tie = true
     }
 }
 
-function checkForWinner(){
+function checkForWinner() :void {
   winningCombos.forEach(function(combo: number[]) {
     if (Math.abs(board[combo[0]] + board[combo[1]] + board[combo[2]]) === 3) {
         winner = true
@@ -97,7 +97,7 @@ function checkForWinner(){
 })
 }
 
-function switchPlayerTurn(){
+function switchPlayerTurn() :void {
   if (winner) return
     turn *= -1
 }

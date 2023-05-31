@@ -14,7 +14,7 @@ const winningCombos = [
 let turn, winner, tie, board;
 /*------------------------ Cached Element References ------------------------*/
 const squareEls = document.querySelectorAll(".sqr");
-const resetBtnEl = document.querySelector("btn");
+const resetBtnEl = document.querySelector("#btn");
 const messageEl = document.querySelector("#message");
 const boardEl = document.querySelector(".board");
 /*----------------------------- Event Listeners -----------------------------*/
